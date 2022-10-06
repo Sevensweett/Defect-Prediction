@@ -88,18 +88,7 @@ class GMM_Separate():
         K = math.ceil(length ** 0.5 * self.k)
         dis_knn = np.zeros(length);
 
-        #找到最近的k个样本，并计算它的距离和相对密度
-        for i in range(length):
-            distances = np.sqrt(np.sum(np.array(data[i] - data)**2, axis=1)) + 1;
-            sort = np.sort(distances)
-            dis_knn[i] = 1 / sort[K];
 
-        #排序
-        sort = np.argsort(dis_knn)
-        #初始化
-        circle_data = [];
-        circle_target = [];
-        #获得当前percent的阈值
         threshold = dis_knn[sort[int(sort.shape[0] * self.percent)]];
 
         #获取相对密度较大值
