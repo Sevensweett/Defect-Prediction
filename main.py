@@ -146,11 +146,6 @@ print(len(data));
 print(data[0].shape);
 print(data[0][0])
 
-
-#获得JS信息
-JS = np.loadtxt('..\\js-结果\\promise12-NEW.txt', dtype=np.float,delimiter=',');
-#JS = np.loadtxt('..\\js-结果\\nasa7-NEW.txt', dtype=np.float,delimiter=',');
-
 print(JS)
 maxjs = [];
 for maxi in  range(len(JS)):
@@ -200,12 +195,7 @@ for numi in range(0,size):
                     auc = 0
                     g_mean = 0
                 else:
-                    clf = train(y_resampled.ravel(), X_resampled,'-s 0')
-                    p_label, p_acc, p_val = predict(target_test.ravel(), data_test, clf)
-                    #mnb = KNeighborsClassifier(n_neighbors=5);
-                    #mnb = GaussianNB();  # 使用默认配置初始化朴素贝叶斯
-                    #mnb.fit(X_resampled,y_resampled.ravel()) 
-                    #p_label = mnb.predict(np.array(data_test));
+  
 
                     print(classification_report(target_test, p_label))
                     f_binary = f1_score(target_test, p_label, average="binary");
