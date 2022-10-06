@@ -179,9 +179,7 @@ for numi in range(0,size):
         # 计算出kp各个结果的值
         for k_i in range(5):
             for percent_i in range(9):
-                # print("k",k_i,"per",percent_i)
-                # 使用k-percent方法
-                ros = GMM_kp_sample.GMM_Separate(k=k_p[k_i], percent=k_percent[percent_i])
+              
                 X_resampled, y_resampled = ros.fit_sample(data_jschoose, target_jschoose)
                 
                 y_resampled_count = sum(y_resampled == 1)
@@ -198,8 +196,7 @@ for numi in range(0,size):
 
                     # mnb = KNeighborsClassifier(n_neighbors=5);
                     # mnb = GaussianNB();  # 使用默认配置初始化朴素贝叶斯
-                    # mnb.fit(X_resampled,y_resampled.ravel())
-                    # p_label = mnb.predict(np.array(data_test));
+   
 
                     auc = roc_auc_score(target_test, p_label)
 
@@ -228,7 +225,7 @@ for numi in range(0,size):
         # 针对当前选择的项目进行建模,argsort[ki+1]当前选择项目序号
         for ki in range(k):
             # 预测总值为各部分占比和相加
-            y_result = y_result + per_k[ki] * all_y[argsort[ki+1]]
+            
 
         for y_i in range(len(data_test)):
             if(y_result[y_i] >= 0.5):
